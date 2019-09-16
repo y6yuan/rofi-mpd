@@ -11,13 +11,13 @@ $ rofi-mpd [option]
 
 ## COMMAND LINE ARGUMENTS
 ```sh
--a, --artist 	  	search for artist, then album, then title
--t, --track 	  	search for a single track in the whole database
--p, --playlist   	search for a playlist load it
--j, --jump       	jump to another song in the current playlist
--l, --longplayer	search for album, then title
--d, --directory 	browse the directory
--c, --control 	    mpd control
+-a, --artist        search for artist, then album, then title
+-t, --track         search for a single track in the whole database
+-p, --playlist      search for a playlist load it
+-j, --jump          jump to another song in the current playlist
+-l, --longplayer    search for album, then title
+-d, --directory     browse the directory
+-c, --control       mpd control
 ```
 
 ## Preview

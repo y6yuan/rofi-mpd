@@ -327,13 +327,13 @@ case $1 in
 	;;
 
 	-h|--help)
-	echo "-a, --artist		search for artist, then album, then title"
-    echo "-t, --track		search for a single track in the whole database"
-	echo "-p, --playlist	search for a playlist load it"
-	echo "-j, --jump		jump to another song in the current playlist"		 
-	echo "-l, --longplayer	search for album, then title"
-	echo "-d, --directory	browse the music directory"
-	echo "-c, --control	    mpd control"
+	echo "-a, --artist      search for artist, then album, then title"
+    echo "-t, --track       search for a single track in the whole database"
+	echo "-p, --playlist    search for a playlist load it"
+	echo "-j, --jump        jump to another song in the current playlist"		 
+	echo "-l, --longplayer  search for album, then title"
+	echo "-d, --directory   browse the music directory"
+	echo "-c, --control     control"
 	
 	
 	

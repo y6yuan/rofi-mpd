@@ -16,7 +16,8 @@ $ rofi-mpd [option]
 -p, --playlist   	search for a playlist load it
 -j, --jump       	jump to another song in the current playlist
 -l, --longplayer	search for album, then title
--d, --directory     browse the directory
+-d, --directory 	browse the directory
+-c, --control 	    mpd control
 ```
 
 ## Preview

@@ -68,22 +68,36 @@ addaftercurrentandplay(){
 
 browsedirectory()
 {
+    local CUR_DIR=$1
+    unset PARENT
+    [[ $CUR_DIR =~ "/" ]] && local PARENT=${CUR_DIR%/*}
+
     while true; do
 
-        local SUBDIR=$(mpc -p $PORT ls "$1")
-        local SELECT=$(echo -e "replace all\nadd all\n--------------------------\n$SUBDIR" | $ROFI);
+        local SUBDIR=$(mpc -p $PORT ls "$CUR_DIR")
+        local SELECT=$(echo -e "replace all\nadd all\n--------------------------\n...\n$SUBDIR" | $ROFI);
 
         if [ "$SELECT" = "" ]; then $ESC_ACTION
         elif [ "$SELECT" = "replace all" ]; then
             CUR_SONG=$(mpc -p $PORT current)
             mpc -p $PORT clear;
-            mpc -p $PORT ls "$1" | mpc -p $PORT add;
+            mpc -p $PORT ls "$CUR_DIR" | mpc -p $PORT add;
             if [ -n "$CUR_SONG" ]; then mpc -p $PORT play; fi
             $ESC_ACTION
-        elif [ "$TITLE" = "add all" ]; then
-            mpc -p $PORT ls "$1" | mpc -p $PORT add;
+        elif [ "$SELECT" = "add all" ]; then
+            mpc -p $PORT ls "$CUR_DIR" | mpc -p $PORT add;
             $ESC_ACTION
-        
+        elif [ "$SELECT" = "..." ]; then
+            if [ -n "$PARENT" ]; then
+                browsedirectory "$PARENT"
+            else
+                DIRECTORY=$(mpc -p $PORT ls | sort -f | $ROFI);
+                if [ "$DIRECTORY" = "" ]; then $ESC_ACTION;
+                fi
+
+                browsedirectory "$DIRECTORY"
+            fi
+            break
         fi
 
         browsedirectory "$SELECT"
@@ -261,7 +275,7 @@ case $1 in
 		if [ "$DIRECTORY" = "" ]; then $ESC_ACTION;
 		fi
 
-        browsedirectory $DIRECTORY
+        browsedirectory "$DIRECTORY"
 		
 	done
 	;;

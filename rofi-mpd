@@ -10,7 +10,7 @@ PORT="6600"
 CURRENT=$(mpc -p $PORT current)
 [[ -n $CURRENT ]] && CURRENT="'Current playing': "$CURRENT
 [[ -n $CURRENT ]] || CURRENT="'Nothing is playing'"
-ROFI="rofi -dmenu -p 'Search'"
+ROFI="rofi -dmenu -i -p 'Search'"
 
 addaftercurrent(){
 	
